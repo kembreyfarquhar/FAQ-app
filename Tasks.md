@@ -1,0 +1,38 @@
+# Tasks 
+
+- Determine what languages/frameworks and database would best suite this project. 
+- Create the database: 
+    - Tables:
+        - Users (Admins)
+        - Questions
+        - Answers
+    - Relations:
+        - Users: can have many Questions and many Answers
+        - Questions can have only one Answer
+        - Answers can have only one Question
+        - Both Questions and Answers can have only one User (Admin)
+    - Validation:
+        - Each field in the tables should have validation
+    - User Authentication:
+        - tokens
+- Create CRUD routes:
+    - Admin: Create (POST), update (PUT/PATCH), delete (DELETE)
+    - End Users: display Questions & Answers (GET)
+- Error Handling: 
+    - if a user attempts to sign in with incorrect auth values... handle response as well as front-end display 
+    - if an admin attempts to submit/edit fields that do not meet validation requirements, handle response as well as front-end display
+- Display (UI):
+    - Home page? List of all FAQs, chronologically 
+    - Ability to filter/sort by Author(Admin)
+    - Admin link to sign-in page
+    - Admin page with list of active FAQs, form to create new ones, button to edit active ones 
+    - Success message? Something to alert the user that their request was completed
+- Styling:
+    - select a style library suitable for this project 
+- Front-End Routing:
+    - Home
+    - Admin sign-in
+    - Admin Home
+    - Admin form for editing or adding 
+- Link Front-End to Back-End:
+    - Use the created requests in the Front-End app
