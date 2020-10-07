@@ -13,8 +13,8 @@
         - Both Questions and Answers can have only one User (Admin)
     - Validation:
         - Each field in the tables should have validation
-    - User Authentication:
-        - tokens
+- User Authentication:
+    - tokens
 - Create CRUD routes:
     - Admin: Create (POST), update (PUT/PATCH), delete (DELETE)
     - End Users: display Questions & Answers (GET)
