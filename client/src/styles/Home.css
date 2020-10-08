@@ -1,0 +1,22 @@
+#home-container {
+  border: 1px solid red;
+  padding-top: 15px;
+}
+
+#home-logo {
+  height: 100px;
+  width: 100px;
+}
+
+#login-logout-button:hover {
+  cursor: pointer;
+  color: grey;
+}
+
+#faq-heading-row {
+  justify-content: center;
+}
+
+#faq-heading {
+  font-family: "Noto Serif", serif;
+}
