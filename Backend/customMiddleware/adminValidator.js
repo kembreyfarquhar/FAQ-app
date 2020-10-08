@@ -16,27 +16,28 @@ function adminValidator(admin) {
     }
   } else {
     //============================CHECK TYPES============================//
-    if (typeof email !== "string") {
-      errors.push("email must be a string");
-    }
+    if (typeof email !== "string" || typeof password !== "string") {
+      if (typeof email !== "string") {
+        errors.push("email must be a string");
+      }
+      if (typeof password !== "string") {
+        errors.push("password must be a string");
+      }
+    } else {
+      //=======================CHECK CHARACTERS & LENGTH=======================//
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        errors.push("please provide a valid email address");
+      }
 
-    if (typeof password !== "string") {
-      errors.push("password must be a string");
-    }
+      if (password.includes(" ") || password.length < 8) {
+        errors.push(
+          "password may not contain spaces and must be at least 8 characters long"
+        );
+      }
 
-    //=======================CHECK CHARACTERS & LENGTH=======================//
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      errors.push("please provide a valid email address");
-    }
-
-    if (password.includes(" ") || password.length < 8) {
-      errors.push(
-        "password may not contain spaces and must be at least 8 characters long"
-      );
-    }
-
-    if (password.length > 255) {
-      errors.push("password must be under 256 characters");
+      if (password.length > 255) {
+        errors.push("password must be under 256 characters");
+      }
     }
   }
 
