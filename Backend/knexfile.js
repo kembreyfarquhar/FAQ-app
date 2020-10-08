@@ -1,5 +1,6 @@
-module.exports = {
+require("dotenv").config();
 
+module.exports = {
   development: {
     client: 'pg',
     useNullAsDefault: true,
