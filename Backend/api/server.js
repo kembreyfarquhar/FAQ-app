@@ -4,6 +4,7 @@ const morgan = require("morgan");
 const cors = require("cors");
 
 const authRouter = require("./routers/authRouter");
+const faqsRouter = require("./routers/faqsRouter");
 
 const server = express();
 
@@ -13,6 +14,7 @@ server.use(cors());
 server.use(morgan("combined"));
 
 server.use("/api/auth", authRouter);
+server.use("/faqs", faqsRouter);
 
 server.get("/", (_req, res) => {
   res.send(
