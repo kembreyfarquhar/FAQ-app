@@ -4,13 +4,11 @@
 - Create the database: 
     - Tables:
         - Users (Admins)
-        - Questions
-        - Answers
+        - FAQs: questions & answers
     - Relations:
-        - Users: can have many Questions and many Answers
-        - Questions can have only one Answer
-        - Answers can have only one Question
-        - Both Questions and Answers can have only one User (Admin)
+        - Users: can have many FAQs
+        - An FAQ can be created by only one user
+        - An FAQ can be edited by a user 
     - Validation:
         - Each field in the tables should have validation
 - User Authentication:
@@ -33,9 +31,9 @@
 - Front-End Routing:
     - Home
     - Admin sign-in
-    - Admin sign-up
     - Admin Home
     - Admin form for editing or adding 
 - Link Front-End to Back-End:
     - Use the created requests in the Front-End app
 - Password validation - front-end: sign-up should make the user enter their password twice to ensure they match
+- Forgot password? handler (send email)
