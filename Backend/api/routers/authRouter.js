@@ -9,6 +9,7 @@ const Admins = require("../controllers/adminsController");
 const validator = require("../../customMiddleware/validator");
 const adminValidator = require("../../customMiddleware/adminValidator");
 
+//REGISTER NEW ADMIN
 router.post("/register", (req, res) => {
   if (Object.keys(req.body).length === 0) {
     res.status(400).json({ error: "Please provide a username and password." });
@@ -35,6 +36,7 @@ router.post("/register", (req, res) => {
   }
 });
 
+//ADMIN LOGIN
 router.post("/login", validator.validateWithPassword, (req, res) => {
   const admin = req.admin;
   delete admin.password;
