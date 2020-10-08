@@ -1,10 +1,25 @@
 const bcrypt = require("bcryptjs");
 const Admins = require("../api/controllers/adminsController");
+require("dotenv").config();
 
 module.exports = {
   adminValidator,
   validateWithPassword,
+  ipValidator,
 };
+
+function ipValidator(req, res, next) {
+  let ip =
+    req.headers["x-forwarded-for"] ||
+    req.connection.remoteAddress ||
+    req.socket.remoteAddress;
+
+  if (ip !== process.env.ADMIN_IP) {
+    res.status(400).json({ message: "You are not authorized to do this." });
+  } else {
+    next();
+  }
+}
 
 function adminValidator(admin) {
   const { email, password } = admin;
