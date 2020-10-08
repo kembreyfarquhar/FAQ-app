@@ -6,7 +6,6 @@ const jwt = require("jsonwebtoken");
 const secret = process.env.JWT_SECRET || "secret";
 
 const Admins = require("../controllers/adminsController");
-const validator = require("../../customMiddleware/validator");
 const adminValidator = require("../../customMiddleware/adminValidator");
 
 //REGISTER NEW ADMIN
@@ -37,7 +36,7 @@ router.post("/register", (req, res) => {
 });
 
 //ADMIN LOGIN
-router.post("/login", validator.validateWithPassword, (req, res) => {
+router.post("/login", adminValidator.validateWithPassword, (req, res) => {
   const admin = req.admin;
   delete admin.password;
   const token = genToken(admin);
