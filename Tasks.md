@@ -25,6 +25,7 @@
     - Home page? List of all FAQs, chronologically 
     - Ability to filter/sort by Author(Admin)
     - Admin link to sign-in page
+    - Admin sign-up page (create an account) - request to be an admin
     - Admin page with list of active FAQs, form to create new ones, button to edit active ones 
     - Success message? Something to alert the user that their request was completed
 - Styling:
@@ -32,7 +33,9 @@
 - Front-End Routing:
     - Home
     - Admin sign-in
+    - Admin sign-up
     - Admin Home
     - Admin form for editing or adding 
 - Link Front-End to Back-End:
     - Use the created requests in the Front-End app
+- Password validation - front-end: sign-up should make the user enter their password twice to ensure they match
