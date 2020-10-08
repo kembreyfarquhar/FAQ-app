@@ -15,9 +15,9 @@ server.use(morgan("combined"));
 server.use("/api/auth", authRouter);
 
 server.get("/", (_req, res) => {
-    res.send(
-        '<h1>Welcome to the FAQ App API!</h1><h3>For documentation <a href="https://github.com/kembreyfarquhar/FAQ-app">click here</a>.</h3><p>This API was made by <a href="https://github.com/kembreyfarquhar">Katie Embrey-Farquhar</a> with ❤️</p>'
-    );
+  res.send(
+    '<h1>Welcome to the FAQ App API!</h1><h3>For documentation <a href="https://github.com/kembreyfarquhar/FAQ-app">click here</a>.</h3><p>This API was made by <a href="https://github.com/kembreyfarquhar">Katie Embrey-Farquhar</a> with ❤️</p>'
+  );
 });
 
 module.exports = server;

@@ -1,20 +1,20 @@
 const db = require("../../database/dbConfig");
 
 module.exports = {
-    add,
-    findById,
-    findByEmail
+  add,
+  findById,
+  findByEmail,
 };
 
 async function add(admin) {
-    const [newAdmin] = await db("admins").insert(admin).returning("*");
-    return newAdmin;
+  const [newAdmin] = await db("admins").insert(admin).returning("*");
+  return newAdmin;
 }
 
 function findById(id) {
-    return db("admins").where({ id }).first();
+  return db("admins").where({ id }).first();
 }
 
 function findByEmail(email) {
-    return db("admins").where({ email }).first();
+  return db("admins").where({ email }).first();
 }

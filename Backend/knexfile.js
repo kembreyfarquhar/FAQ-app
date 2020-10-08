@@ -2,7 +2,7 @@ require("dotenv").config();
 
 module.exports = {
   development: {
-    client: 'pg',
+    client: "pg",
     useNullAsDefault: true,
     pool: {
       min: 2,
@@ -16,14 +16,14 @@ module.exports = {
     connection: {
       database: process.env.DB_DEV_DATABASE,
       user: process.env.DB_DEV_USER,
-      password: process.env.DB_DEV_PASSWORD
+      password: process.env.DB_DEV_PASSWORD,
     },
     migrations: {
-      directory: "./database/migrations"
+      directory: "./database/migrations",
     },
     seeds: {
-      directory: "./database/seeds"
-    }
+      directory: "./database/seeds",
+    },
   },
 
   production: {
@@ -32,15 +32,15 @@ module.exports = {
     connection: process.env.DATABASE_URL,
     pool: {
       min: 2,
-      max: 10
+      max: 10,
     },
     useNullAsDefault: true,
     migrations: {
       tableName: "knex_migrations",
-      directory: "./database/migrations"
+      directory: "./database/migrations",
     },
     seeds: {
-      directory: "./database/seeds"
-    }
-  }
+      directory: "./database/seeds",
+    },
+  },
 };
