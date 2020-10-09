@@ -23,7 +23,7 @@ export const Home = (props) => {
     <>
       <Header setIsLoggingIn={props.setIsLoggingIn} />
       <Container>
-        {faqs.length && faqs.map((faq) => <Faq faq={faq} />)}
+        {faqs.length && faqs.map((faq) => <Faq key={faq.id} faq={faq} />)}
       </Container>
     </>
   );
