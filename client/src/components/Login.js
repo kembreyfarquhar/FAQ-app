@@ -3,8 +3,8 @@ import "../styles/Login.css";
 import Button from "react-bootstrap/esm/Button";
 import Container from "react-bootstrap/esm/Container";
 import Form from "react-bootstrap/Form";
-import Alert from "react-bootstrap/Alert";
 import axios from "axios";
+import { CustomAlert } from "./CustomAlert";
 
 export const Login = (props) => {
   const [email, setEmail] = useState("");
@@ -24,16 +24,17 @@ export const Login = (props) => {
       axios
         .post("http://localhost:4000/api/auth/login", { email, password })
         .then((res) => {
-          console.log("SUCCESS", res.data);
           localStorage.setItem("faq_token", res.data.token);
+          props.setIsAdmin(true);
           props.setIsLoggingIn(false);
         })
         .catch((err) => {
-          console.log("ERROR", err.response.data);
-          setRequestError({
-            status: err.response.status,
-            message: err.response.data.error,
-          });
+          let errMessage;
+          if (err.hasOwnProperty("response")) {
+            errMessage = err.response.data.message;
+          }
+          setRequestError(errMessage || "Something went wrong");
+          setValidated(false);
         });
     }
   }
@@ -46,27 +47,19 @@ export const Login = (props) => {
     setRequestError(null);
   }
 
-  function showAlert() {
-    if (requestError) {
-      return (
-        <Alert
-          variant="danger"
-          onClose={() => setRequestError(null)}
-          dismissible
-        >
-          {requestError.message}
-        </Alert>
-      );
-    }
-  }
-
   return (
     <div id="login-page">
       <Button variant="secondary" type="button" onClick={goBack}>
         Go Back
       </Button>
       <Container id="login-container">
-        {showAlert()}
+        {requestError && (
+          <CustomAlert
+            variant="danger"
+            fn={() => setRequestError(null)}
+            text={requestError}
+          />
+        )}
         <h2 id="login-heading">Admin Login</h2>
         <Form noValidate validated={validated} onSubmit={logIn}>
           <Form.Group controlId="formBasicEmail">
