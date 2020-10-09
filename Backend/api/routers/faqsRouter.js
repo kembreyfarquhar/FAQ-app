@@ -38,4 +38,52 @@ router.post("/", restricted.tokenRestricted, (req, res) => {
   }
 });
 
+//EDIT FAQ
+router.put(
+  "/:id",
+  restricted.tokenRestricted,
+  validator.validateFaqId,
+  async (req, res) => {
+    const { id } = req.params;
+    const changes = req.body;
+
+    if (Object.keys(req.body).length === 0) {
+      res.status(400).json({ error: "Please provide changes." });
+    }
+
+    if (changes.id) {
+      res.status(400).json({ message: "faq id cannot be changed" });
+    } else {
+      try {
+        const updatedFaq = await FAQS.update(changes, id);
+        res.status(200).json(updatedFaq);
+      } catch (err) {
+        res
+          .status(500)
+          .json({ error: err.toString(), message: "Something went wrong" });
+      }
+    }
+  }
+);
+
+//DELETE FAQ
+router.delete(
+  "/:id",
+  restricted.tokenRestricted,
+  validator.validateFaqId,
+  async (req, res) => {
+    const id = req.params.id;
+
+    try {
+      FAQS.remove({ id })
+        .then(() => res.status(204).end())
+        .catch((err) => res.status(500).json(err));
+    } catch (err) {
+      res
+        .status(500)
+        .json({ error: err.toString(), message: "Something went wrong" });
+    }
+  }
+);
+
 module.exports = router;
