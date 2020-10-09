@@ -1,14 +1,38 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import "../styles/Home.css";
+import axios from "axios";
 import logo from "../assets/CircleLogo.png";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Image from "react-bootstrap/Image";
-import "../styles/Home.css";
+import { Faq } from "./Faq";
+require("dotenv").config();
 
 export const Home = (props) => {
+  const [faqs, setFaqs] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:4000/faqs/`)
+      .then((res) => setFaqs(res.data))
+      .catch((err) => console.log("ERROR: ", err));
+  }, []);
+
   return (
-    <Container id="home-container">
+    <>
+      <Header setIsLoggingIn={props.setIsLoggingIn} />
+      <Container>
+        {faqs.length && faqs.map((faq) => <Faq faq={faq} />)}
+      </Container>
+    </>
+  );
+};
+
+const Header = (props) => {
+  console.log(props);
+  return (
+    <div id="home-container">
       <Row>
         <Col>
           <Image src={logo} id="home-logo" />
@@ -25,6 +49,6 @@ export const Home = (props) => {
       <Row id="faq-heading-row">
         <h1 id="faq-heading">Frequently Asked Questions</h1>
       </Row>
-    </Container>
+    </div>
   );
 };
