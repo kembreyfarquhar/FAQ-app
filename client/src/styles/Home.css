@@ -25,3 +25,7 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
 }
+
+#faqs-container {
+  padding-bottom: 40px;
+}
