@@ -1,0 +1,19 @@
+#faq-card {
+  padding: 10px 10px 10px 15px;
+}
+
+#faq-question-col {
+}
+
+#faq-collapse-col {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-items: flex-end;
+  padding-right: 10px;
+}
+
+#faq-collapse-btn {
+  outline: none !important;
+  outline-offset: none !important;
+}

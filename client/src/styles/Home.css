@@ -1,11 +1,13 @@
 #home-container {
-  border: 1px solid red;
-  padding-top: 15px;
+  box-shadow: 3px 3px 3px grey;
+  padding: 15px;
+  margin-bottom: 20px;
+  background: white;
 }
 
 #home-logo {
-  height: 100px;
-  width: 100px;
+  height: 70px;
+  width: 70px;
 }
 
 #login-logout-button:hover {
@@ -18,5 +20,8 @@
 }
 
 #faq-heading {
+  text-align: center;
   font-family: "Noto Serif", serif;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
 }
