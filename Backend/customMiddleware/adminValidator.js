@@ -28,19 +28,6 @@ function tokenRestricted(req, res, next) {
   }
 }
 
-function ipValidator(req, res, next) {
-  let ip =
-    req.headers["x-forwarded-for"] ||
-    req.connection.remoteAddress ||
-    req.socket.remoteAddress;
-
-  if (ip !== process.env.ADMIN_IP) {
-    res.status(400).json({ message: "You are not authorized to do this." });
-  } else {
-    next();
-  }
-}
-
 function adminValidator(admin) {
   const { email, password } = admin;
   let errors = [];

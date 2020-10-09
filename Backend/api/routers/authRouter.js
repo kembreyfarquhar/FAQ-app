@@ -9,7 +9,7 @@ const Admins = require("../controllers/adminsController");
 const adminValidator = require("../../customMiddleware/adminValidator");
 
 //REGISTER NEW ADMIN
-router.post("/register", adminValidator.ipValidator, (req, res) => {
+router.post("/register", (req, res) => {
   if (Object.keys(req.body).length === 0) {
     res.status(400).json({ error: "Please provide an email and password." });
   }
