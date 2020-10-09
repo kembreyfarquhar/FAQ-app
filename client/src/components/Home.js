@@ -6,16 +6,25 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Image from "react-bootstrap/Image";
+import Card from "react-bootstrap/esm/Card";
 import { Faq } from "./Faq";
+import { FaqForm } from "./FaqForm";
+import { CustomAlert } from "./CustomAlert";
 
 export const Home = (props) => {
   const { setIsLoggingIn, isAdmin, setIsAdmin } = props;
   const [faqs, setFaqs] = useState([]);
+  const [saveAlert, setSaveAlert] = useState(null);
 
   useEffect(() => {
     axios
       .get(`http://localhost:4000/faqs/`)
-      .then((res) => setFaqs(res.data))
+      .then((res) => {
+        res.data.sort((a, b) => {
+          return a.id - b.id;
+        });
+        setFaqs(res.data);
+      })
       .catch((err) => console.log("ERROR: ", err));
   }, []);
 
@@ -29,6 +38,19 @@ export const Home = (props) => {
       <Container id="faqs-container">
         {faqs.length &&
           faqs.map((faq) => <Faq key={faq.id} faq={faq} isAdmin={isAdmin} />)}
+        {isAdmin && (
+          <Card className="faq-card">
+            {saveAlert && (
+              <CustomAlert
+                variant={saveAlert.variant}
+                fn={saveAlert.fn}
+                text={saveAlert.text}
+              />
+            )}
+            <Card.Title>Add a new FAQ</Card.Title>
+            <FaqForm setSaveAlert={setSaveAlert} />
+          </Card>
+        )}
       </Container>
     </>
   );
