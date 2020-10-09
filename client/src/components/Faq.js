@@ -10,6 +10,8 @@ import Modal from "react-bootstrap/Modal";
 import { CustomAlert } from "./CustomAlert";
 import { FaqForm } from "./FaqForm";
 
+const dotenv = require("dotenv").config();
+
 export const Faq = (props) => {
   const { faq, isAdmin } = props;
   const [open, setOpen] = useState(false);
@@ -21,7 +23,7 @@ export const Faq = (props) => {
   function deleteFAQ(e) {
     e.preventDefault();
     axios
-      .delete(`http://localhost:4000/faqs/${faq.id}`, {
+      .delete(`${process.env.REACT_APP_API_URL}/faqs/${faq.id}`, {
         headers: {
           authorization: localStorage.getItem("faq_token"),
         },

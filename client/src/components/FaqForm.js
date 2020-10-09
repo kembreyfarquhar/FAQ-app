@@ -5,6 +5,8 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
 
+const dotenv = require("dotenv").config();
+
 export const FaqForm = (props) => {
   let initialState;
   if (props.faq) {
@@ -24,7 +26,7 @@ export const FaqForm = (props) => {
 
   function saveEdit() {
     axios
-      .put(`http://localhost:4000/faqs/${props.faq.id}`, faq, {
+      .put(`${process.env.REACT_APP_API_URL}/faqs/${props.faq.id}`, faq, {
         headers: {
           authorization: localStorage.getItem("faq_token"),
         },
@@ -51,7 +53,7 @@ export const FaqForm = (props) => {
 
   function saveNewFaq() {
     axios
-      .post("http://localhost:4000/faqs/", faq, {
+      .post(`${process.env.REACT_APP_API_URL}/faqs/`, faq, {
         headers: {
           authorization: localStorage.getItem("faq_token"),
         },

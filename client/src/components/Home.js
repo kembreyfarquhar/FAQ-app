@@ -11,6 +11,8 @@ import { Faq } from "./Faq";
 import { FaqForm } from "./FaqForm";
 import { CustomAlert } from "./CustomAlert";
 
+const dotenv = require("dotenv").config();
+
 export const Home = (props) => {
   const { setIsLoggingIn, isAdmin, setIsAdmin } = props;
   const [faqs, setFaqs] = useState([]);
@@ -18,7 +20,7 @@ export const Home = (props) => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:4000/faqs/`)
+      .get(`${process.env.REACT_APP_API_URL}/faqs/`)
       .then((res) => {
         res.data.sort((a, b) => {
           return a.id - b.id;

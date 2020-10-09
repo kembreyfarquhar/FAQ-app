@@ -6,6 +6,8 @@ import Form from "react-bootstrap/Form";
 import axios from "axios";
 import { CustomAlert } from "./CustomAlert";
 
+const dotenv = require("dotenv").config();
+
 export const Login = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -22,7 +24,10 @@ export const Login = (props) => {
 
     if (email.length && password.length) {
       axios
-        .post("http://localhost:4000/api/auth/login", { email, password })
+        .post(`${process.env.REACT_APP_API_URL}/api/auth/login`, {
+          email,
+          password,
+        })
         .then((res) => {
           localStorage.setItem("faq_token", res.data.token);
           props.setIsAdmin(true);
