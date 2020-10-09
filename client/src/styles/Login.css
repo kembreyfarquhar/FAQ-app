@@ -1,0 +1,20 @@
+#login-page {
+  padding: 15px;
+}
+
+#login-container {
+  padding-top: 50px;
+  max-width: 650px;
+}
+
+#login-heading {
+  text-align: center;
+  font-family: "Noto Serif", serif;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  padding-bottom: 10px;
+}
+
+#login-password {
+  margin-bottom: 30px;
+}
