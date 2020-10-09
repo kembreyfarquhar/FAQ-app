@@ -1,12 +1,10 @@
-#faq-card {
+.faq-card {
   padding: 10px 10px 10px 15px;
+  margin: 20px 0px;
 }
 
 #faq-top-row:hover {
   cursor: pointer;
-}
-
-#faq-question-col {
 }
 
 #faq-collapse-col {
