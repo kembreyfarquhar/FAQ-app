@@ -14,10 +14,12 @@ Components:
 
 function App() {
   const [loggingIn, setIsLoggingIn] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
+
   return loggingIn ? (
-    <Login setIsLoggingIn={setIsLoggingIn} />
+    <Login setIsLoggingIn={setIsLoggingIn} isAdmin={isAdmin} />
   ) : (
-    <Home setIsLoggingIn={setIsLoggingIn} />
+    <Home setIsLoggingIn={setIsLoggingIn} setIsAdmin={setIsAdmin} />
   );
 }
 
