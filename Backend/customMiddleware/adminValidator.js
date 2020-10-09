@@ -7,7 +7,6 @@ const secret = process.env.JWT_SECRET || "secret";
 module.exports = {
   adminValidator,
   validateWithPassword,
-  ipValidator,
   tokenRestricted,
 };
 
