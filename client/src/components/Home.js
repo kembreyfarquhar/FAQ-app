@@ -7,9 +7,9 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Image from "react-bootstrap/Image";
 import { Faq } from "./Faq";
-require("dotenv").config();
 
 export const Home = (props) => {
+  const { setIsLoggingIn, isAdmin, setIsAdmin } = props;
   const [faqs, setFaqs] = useState([]);
 
   useEffect(() => {
@@ -21,16 +21,21 @@ export const Home = (props) => {
 
   return (
     <>
-      <Header setIsLoggingIn={props.setIsLoggingIn} />
-      <Container>
-        {faqs.length && faqs.map((faq) => <Faq key={faq.id} faq={faq} />)}
+      <Header
+        setIsLoggingIn={setIsLoggingIn}
+        isAdmin={isAdmin}
+        setIsAdmin={setIsAdmin}
+      />
+      <Container id="faqs-container">
+        {faqs.length &&
+          faqs.map((faq) => <Faq key={faq.id} faq={faq} isAdmin={isAdmin} />)}
       </Container>
     </>
   );
 };
 
 const Header = (props) => {
-  console.log(props);
+  const { setIsLoggingIn, isAdmin, setIsAdmin } = props;
   return (
     <div id="home-container">
       <Row>
@@ -40,7 +45,14 @@ const Header = (props) => {
         <Col style={{ textAlign: "right" }}>
           <p
             id="login-logout-button"
-            onClick={() => props.setIsLoggingIn(true)}
+            onClick={() => {
+              if (isAdmin) {
+                localStorage.removeItem("faq_token");
+                setIsAdmin(false);
+              } else {
+                setIsLoggingIn(true);
+              }
+            }}
           >
             {props.isAdmin ? "Logout" : "Admin"}
           </p>
