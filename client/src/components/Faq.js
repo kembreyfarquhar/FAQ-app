@@ -8,12 +8,15 @@ import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { CustomAlert } from "./CustomAlert";
+import { FaqForm } from "./FaqForm";
 
 export const Faq = (props) => {
   const { faq, isAdmin } = props;
   const [open, setOpen] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [deleteAlert, setDeleteAlert] = useState(null);
+  const [editAlert, setEditAlert] = useState(null);
+  const [editing, setEditing] = useState(false);
 
   function deleteFAQ(e) {
     e.preventDefault();
@@ -27,7 +30,7 @@ export const Faq = (props) => {
         setShowDeleteModal(false);
         setDeleteAlert({
           variant: "success",
-          fn: () => setDeleteAlert(null),
+          fn: () => window.location.reload(),
           text: "Successfully deleted.",
         });
       })
@@ -60,6 +63,29 @@ export const Faq = (props) => {
     );
   }
 
+  function editAndDeleteBtns() {
+    return (
+      <Row>
+        <Col>
+          <Button
+            variant="secondary"
+            type="button"
+            onClick={() => setEditing(true)}
+          >
+            Edit
+          </Button>{" "}
+          <Button
+            variant="danger"
+            type="button"
+            onClick={() => setShowDeleteModal(true)}
+          >
+            Delete
+          </Button>
+        </Col>
+      </Row>
+    );
+  }
+
   function showAnswer() {
     if (isAdmin) {
       return (
@@ -69,20 +95,7 @@ export const Faq = (props) => {
               <p>{faq.answer}</p>
             </Col>
           </Row>
-          <Row>
-            <Col>
-              <Button variant="secondary" type="button">
-                Edit
-              </Button>{" "}
-              <Button
-                variant="danger"
-                type="button"
-                onClick={() => setShowDeleteModal(true)}
-              >
-                Delete
-              </Button>
-            </Col>
-          </Row>
+          {editAndDeleteBtns()}
         </>
       );
     } else {
@@ -97,23 +110,43 @@ export const Faq = (props) => {
   return (
     <>
       {deleteModal()}
-      {deleteAlert && (
-        <CustomAlert
-          variant={deleteAlert.variant}
-          fn={deleteAlert.fn}
-          text={deleteAlert.text}
-        />
-      )}
-      <Card id="faq-card">
-        <Row id="faq-top-row" onClick={() => setOpen(!open)}>
-          <Col xs={10} id="faq-question-col">
-            <h3>{faq.question}</h3>
-          </Col>
-          <div id="faq-collapse-col">
-            {!isAdmin && <div id="faq-collapse-btn">{open ? "-" : "+"}</div>}
-          </div>
-        </Row>
-        {showAnswer()}
+      <Card className="faq-card">
+        {deleteAlert && (
+          <CustomAlert
+            variant={deleteAlert.variant}
+            fn={deleteAlert.fn}
+            text={deleteAlert.text}
+          />
+        )}
+        {editAlert && (
+          <CustomAlert
+            variant={editAlert.variant}
+            fn={editAlert.fn}
+            text={editAlert.text}
+          />
+        )}
+        {editing ? (
+          <FaqForm
+            faq={faq}
+            editing={editing}
+            setEditing={setEditing}
+            setEditAlert={setEditAlert}
+          />
+        ) : (
+          <>
+            <Row id="faq-top-row" onClick={() => setOpen(!open)}>
+              <Col xs={10} id="faq-question-col">
+                <h3>{faq.question}</h3>
+              </Col>
+              <div id="faq-collapse-col">
+                {!isAdmin && (
+                  <div id="faq-collapse-btn">{open ? "-" : "+"}</div>
+                )}
+              </div>
+            </Row>
+            {showAnswer()}
+          </>
+        )}
       </Card>
     </>
   );

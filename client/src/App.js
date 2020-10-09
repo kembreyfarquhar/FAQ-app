@@ -4,7 +4,7 @@ import { Login } from "./components/Login";
 
 function App() {
   const [loggingIn, setIsLoggingIn] = useState(false);
-  const [isAdmin, setIsAdmin] = useState(true);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
     if (localStorage.getItem("faq_token")) {
