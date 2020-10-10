@@ -31,7 +31,7 @@ export const FaqForm = (props) => {
           authorization: localStorage.getItem("faq_token"),
         },
       })
-      .then((res) => {
+      .then(() => {
         props.setEditAlert({
           variant: "success",
           fn: () => window.location.reload(),
@@ -107,10 +107,12 @@ export const FaqForm = (props) => {
     }
     setValidated(true);
 
-    if (props.hasOwnProperty("editing")) {
-      saveEdit();
-    } else {
-      saveNewFaq();
+    if (faq.question.length && faq.answer.length) {
+      if (props.hasOwnProperty("editing")) {
+        saveEdit();
+      } else {
+        saveNewFaq();
+      }
     }
   }
 
