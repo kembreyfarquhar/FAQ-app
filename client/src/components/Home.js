@@ -38,7 +38,7 @@ export const Home = (props) => {
         setIsAdmin={setIsAdmin}
       />
       <Container id="faqs-container">
-        {faqs.length &&
+        {faqs.length > 0 &&
           faqs.map((faq) => <Faq key={faq.id} faq={faq} isAdmin={isAdmin} />)}
         {isAdmin && (
           <Card className="faq-card">
