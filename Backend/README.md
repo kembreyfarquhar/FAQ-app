@@ -185,6 +185,8 @@ As an Administrator User I’d like the ability to manage questions and answers 
 }
 ```
 
+[Back to Top](#table-of-contents)
+
 ### [PUT] FAQ
 
 #### URL: https://curate-faq.herokuapp.com/faqs/:id
@@ -214,6 +216,8 @@ As an Administrator User I’d like the ability to manage questions and answers 
 }
 ```
 
+[Back to Top](#table-of-contents)
+
 ### [DELETE] FAQ
 
 #### URL: https://curate-faq.herokuapp.com/faqs/:id
@@ -221,3 +225,5 @@ As an Administrator User I’d like the ability to manage questions and answers 
 > Use the FAQ ID as a query param
 
 There is no body or return for this endpoint. If the FAQ was successfully deleted, a status 204 will be sent back.
+
+[Back to Top](#table-of-contents)
