@@ -18,7 +18,7 @@ server.use("/faqs", faqsRouter);
 
 server.get("/", (_req, res) => {
   res.send(
-    '<h1>Welcome to the FAQ App API!</h1><h3>For documentation <a href="https://github.com/kembreyfarquhar/FAQ-app">click here</a>.</h3><p>This API was made by <a href="https://github.com/kembreyfarquhar">Katie Embrey-Farquhar</a> with ❤️</p>'
+    '<h1>Welcome to the FAQ App API!</h1><h3>For documentation <a href="https://github.com/kembreyfarquhar/FAQ-app/tree/main/Backend">click here</a>.</h3><p>This API was made by <a href="https://github.com/kembreyfarquhar">Katie Embrey-Farquhar</a> with ❤️</p>'
   );
 });
 
