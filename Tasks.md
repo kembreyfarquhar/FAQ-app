@@ -1,39 +1,36 @@
-# Tasks 
+# Tasks
 
-- Determine what languages/frameworks and database would best suite this project. 
-- Create the database: 
-    - Tables:
-        - Users (Admins)
-        - FAQs: questions & answers
-    - Relations:
-        - Users: can have many FAQs
-        - An FAQ can be created by only one user
-        - An FAQ can be edited by a user 
-    - Validation:
-        - Each field in the tables should have validation
+- Determine what languages/frameworks and database would best suite this project.
+- Create the database:
+  - Tables:
+    - Admins
+    - FAQs: questions & answers
+  - Relations:
+    - Admins: can have many FAQs
+    - An FAQ can be created by only one admin
+    - An FAQ can be edited by any admin
+  - Validation:
+    - Each field in the tables should have validation
 - User Authentication:
-    - tokens
+  - tokens
 - Create CRUD routes:
-    - Admin: Create (POST), update (PUT/PATCH), delete (DELETE)
-    - End Users: display Questions & Answers (GET)
-- Error Handling: 
-    - if a user attempts to sign in with incorrect auth values... handle response as well as front-end display 
-    - if an admin attempts to submit/edit fields that do not meet validation requirements, handle response as well as front-end display
+  - Admin: Create (POST), update (PUT/PATCH), delete (DELETE)
+  - End Users: display Questions & Answers (GET)
+- Error Handling:
+  - if a user attempts to sign in with incorrect auth values... handle response as well as front-end display
+  - if an admin attempts to submit/edit fields that do not meet validation requirements, handle response as well as front-end display
 - Display (UI):
-    - Home page? List of all FAQs, chronologically 
-    - Ability to filter/sort by Author(Admin)
-    - Admin link to sign-in page
-    - Admin sign-up page (create an account) - request to be an admin
-    - Admin page with list of active FAQs, form to create new ones, button to edit active ones 
-    - Success message? Something to alert the user that their request was completed
+  - Home page? List of all FAQs, chronologically
+  - Admin link to sign-in page
+  - Admin page with list of active FAQs, form to create new ones, buttons to edit/delete active ones
+  - Success message? Something to alert the user that their request was completed
 - Styling:
-    - select a style library suitable for this project 
+  - select a style library suitable for this project
 - Front-End Routing:
-    - Home
-    - Admin sign-in
-    - Admin Home
-    - Admin form for editing or adding 
+  - Home
+  - Admin sign-in
+  - Admin Home
+  - Admin form for editing or adding
 - Link Front-End to Back-End:
-    - Use the created requests in the Front-End app
-- Password validation - front-end: sign-up should make the user enter their password twice to ensure they match
+  - Use the created requests in the Front-End app
 - Forgot password? handler (send email)
