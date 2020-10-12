@@ -47,7 +47,7 @@ router.post("/login", adminValidator.validateWithPassword, (req, res) => {
 });
 
 //VALIDATE TOKEN
-router.post("/token", adminValidator.tokenRestricted, (req, res) => {
+router.post("/:token", adminValidator.tokenRestricted, (req, res) => {
   res.status(200).json(req.token);
 });
 
