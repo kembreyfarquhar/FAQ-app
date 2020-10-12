@@ -7,6 +7,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Image from "react-bootstrap/Image";
 import Card from "react-bootstrap/esm/Card";
+import Spinner from "react-bootstrap/Spinner";
 import { Faq } from "./Faq";
 import { FaqForm } from "./FaqForm";
 import { CustomAlert } from "./CustomAlert";
@@ -28,7 +29,7 @@ export const Home = (props) => {
         setFaqs(res.data);
       })
       .catch((err) => console.log("ERROR: ", err));
-  }, []);
+  }, [faqs]);
 
   return (
     <>
@@ -38,8 +39,15 @@ export const Home = (props) => {
         setIsAdmin={setIsAdmin}
       />
       <Container id="faqs-container">
-        {faqs.length > 0 &&
-          faqs.map((faq) => <Faq key={faq.id} faq={faq} isAdmin={isAdmin} />)}
+        {faqs.length > 0 ? (
+          faqs.map((faq) => <Faq key={faq.id} faq={faq} isAdmin={isAdmin} />)
+        ) : (
+          <div id="faqs-spinner-container">
+            <Spinner animation="border" role="status">
+              <span className="sr-only">Loading...</span>
+            </Spinner>
+          </div>
+        )}
         {isAdmin && (
           <Card className="faq-card">
             {saveAlert && (

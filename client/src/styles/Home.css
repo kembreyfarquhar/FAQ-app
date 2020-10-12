@@ -26,6 +26,11 @@
   -webkit-font-smoothing: antialiased;
 }
 
+#faqs-spinner-container {
+  display: flex;
+  justify-content: center;
+}
+
 #faqs-container {
   padding-bottom: 40px;
 }
