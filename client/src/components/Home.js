@@ -8,6 +8,7 @@ import { Faq } from "./Faq";
 import { FaqForm } from "./FaqForm";
 import { CustomAlert } from "./CustomAlert";
 import { Header } from "./Header";
+import { SendQuestion } from "./SendQuestion";
 
 const dotenv = require("dotenv").config();
 
@@ -58,6 +59,7 @@ export const Home = (props) => {
             <FaqForm setSaveAlert={setSaveAlert} />
           </Card>
         )}
+        {!isAdmin && <SendQuestion />}
       </Container>
     </>
   );

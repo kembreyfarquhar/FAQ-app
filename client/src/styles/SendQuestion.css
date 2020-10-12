@@ -1,0 +1,26 @@
+#sendq-card {
+  margin-top: 50px;
+}
+
+#sendq-header {
+  font-size: 1.6rem;
+  text-align: center;
+  font-family: "Noto Serif", serif;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
+
+#sendq-title {
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+#sendq-form-container {
+  padding: 5px 50px;
+  max-width: 600px;
+}
+
+#sendq-submit-btn-container {
+  display: flex;
+  justify-content: center;
+}
