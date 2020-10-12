@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { Home } from "./components/Home";
 import { Login } from "./components/Login";
+
+const dotenv = require("dotenv").config();
 
 function App() {
   const [loggingIn, setIsLoggingIn] = useState(false);
@@ -8,9 +11,13 @@ function App() {
 
   useEffect(() => {
     if (localStorage.getItem("faq_token")) {
-      setIsAdmin(true);
+      const token = localStorage.getItem("faq_token");
+      axios
+        .post(`${process.env.REACT_APP_API_URL}/api/auth/${token}`)
+        .then(() => setIsAdmin(true))
+        .catch(() => setIsAdmin(false));
     }
-  }, [isAdmin]);
+  }, []);
 
   return loggingIn ? (
     <Login setIsLoggingIn={setIsLoggingIn} setIsAdmin={setIsAdmin} />
