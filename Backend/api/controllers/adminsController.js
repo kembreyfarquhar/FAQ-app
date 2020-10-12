@@ -4,6 +4,7 @@ module.exports = {
   add,
   findById,
   findByEmail,
+  updatePassword,
 };
 
 async function add(admin) {
@@ -17,4 +18,12 @@ function findById(id) {
 
 function findByEmail(email) {
   return db("admins").where({ email }).first();
+}
+
+async function updatePassword(email, password) {
+  const [updatedUser] = await db("admins")
+    .where({ email })
+    .update({ password })
+    .returning("*");
+  return updatedUser;
 }
