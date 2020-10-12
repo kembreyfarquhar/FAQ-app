@@ -4,6 +4,7 @@ import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
+import { successReload } from "./CustomAlert";
 
 const dotenv = require("dotenv").config();
 
@@ -34,10 +35,10 @@ export const FaqForm = (props) => {
       .then(() => {
         props.setEditAlert({
           variant: "success",
-          fn: () => window.location.reload(),
           text: "Successfully updated.",
         });
         setButtonState(true);
+        successReload();
       })
       .catch(() => {
         props.setEditAlert({
@@ -61,10 +62,10 @@ export const FaqForm = (props) => {
       .then(() => {
         props.setSaveAlert({
           variant: "success",
-          fn: () => window.location.reload(),
           text: "Successfully saved new FAQ.",
         });
         setButtonState(true);
+        successReload();
       })
       .catch(() => {
         props.setSaveAlert({

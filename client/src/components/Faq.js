@@ -7,7 +7,7 @@ import Col from "react-bootstrap/esm/Col";
 import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import { CustomAlert } from "./CustomAlert";
+import { CustomAlert, successReload } from "./CustomAlert";
 import { FaqForm } from "./FaqForm";
 
 const dotenv = require("dotenv").config();
@@ -32,9 +32,9 @@ export const Faq = (props) => {
         setShowDeleteModal(false);
         setDeleteAlert({
           variant: "success",
-          fn: () => window.location.reload(),
           text: "Successfully deleted.",
         });
+        successReload();
       })
       .catch(() => {
         setShowDeleteModal(false);
