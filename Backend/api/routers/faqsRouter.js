@@ -45,14 +45,19 @@ router.put(
   validator.validateFaqId,
   async (req, res) => {
     const { id } = req.params;
-    const changes = req.body;
+    let changes = req.body;
+    const last_edited_by = req.jwtToken.subject;
+    const updated_at = new Date().toISOString();
+    changes = { ...changes, last_edited_by, updated_at };
 
     if (Object.keys(req.body).length === 0) {
       res.status(400).json({ error: "Please provide changes." });
     }
 
-    if (changes.id) {
-      res.status(400).json({ message: "faq id cannot be changed" });
+    if (changes.id || changes.created_by || changes.created_at) {
+      res.status(400).json({
+        message: "faq id, created_by, and created_at cannot be changed",
+      });
     } else {
       try {
         const updatedFaq = await FAQS.update(changes, id);
