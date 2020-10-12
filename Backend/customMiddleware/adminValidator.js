@@ -11,7 +11,9 @@ module.exports = {
 };
 
 function tokenRestricted(req, res, next) {
-  const token = req.headers.authorization;
+  let token;
+  if (req.params.token) token = req.params.token;
+  if (req.headers.authorization) token = req.headers.authorization;
 
   if (token) {
     jwt.verify(token, secret, (err, decodedToken) => {
