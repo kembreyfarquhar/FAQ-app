@@ -8,6 +8,7 @@ module.exports = {
   adminValidator,
   validateWithPassword,
   tokenRestricted,
+  validateAdminEmail,
 };
 
 function tokenRestricted(req, res, next) {
@@ -26,6 +27,25 @@ function tokenRestricted(req, res, next) {
     });
   } else {
     res.status(401).json({ message: "Please provide a token" });
+  }
+}
+
+async function validateAdminEmail(req, res, next) {
+  const email = req.params.email;
+
+  try {
+    const admin = await Admins.findByEmail(email);
+
+    if (admin) {
+      req.admin = admin;
+      next();
+    } else {
+      res.status(400).json({ error: "admin not found" });
+    }
+  } catch (err) {
+    res
+      .status(500)
+      .json({ error: err.toString(), message: "something went wrong" });
   }
 }
 
