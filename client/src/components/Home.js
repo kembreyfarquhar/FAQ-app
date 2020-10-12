@@ -29,7 +29,7 @@ export const Home = (props) => {
         setFaqs(res.data);
       })
       .catch((err) => console.log("ERROR: ", err));
-  }, [faqs]);
+  }, []);
 
   return (
     <>
