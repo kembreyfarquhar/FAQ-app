@@ -1,16 +1,13 @@
 import React, { useState, useEffect } from "react";
 import "../styles/Home.css";
 import axios from "axios";
-import logo from "../assets/CircleLogo.png";
 import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Image from "react-bootstrap/Image";
 import Card from "react-bootstrap/esm/Card";
 import Spinner from "react-bootstrap/Spinner";
 import { Faq } from "./Faq";
 import { FaqForm } from "./FaqForm";
 import { CustomAlert } from "./CustomAlert";
+import { Header } from "./Header";
 
 const dotenv = require("dotenv").config();
 
@@ -63,36 +60,5 @@ export const Home = (props) => {
         )}
       </Container>
     </>
-  );
-};
-
-const Header = (props) => {
-  const { setIsLoggingIn, isAdmin, setIsAdmin } = props;
-  return (
-    <div id="home-container">
-      <Row>
-        <Col>
-          <Image src={logo} id="home-logo" />
-        </Col>
-        <Col style={{ textAlign: "right" }}>
-          <p
-            id="login-logout-button"
-            onClick={() => {
-              if (isAdmin) {
-                localStorage.removeItem("faq_token");
-                setIsAdmin(false);
-              } else {
-                setIsLoggingIn(true);
-              }
-            }}
-          >
-            {props.isAdmin ? "Logout" : "Admin"}
-          </p>
-        </Col>
-      </Row>
-      <Row id="faq-heading-row">
-        <h1 id="faq-heading">Frequently Asked Questions</h1>
-      </Row>
-    </div>
   );
 };
