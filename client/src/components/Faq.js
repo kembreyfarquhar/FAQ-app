@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "../styles/Faq.css";
 import axios from "axios";
 import Card from "react-bootstrap/Card";
