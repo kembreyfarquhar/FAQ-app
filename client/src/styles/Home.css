@@ -15,6 +15,11 @@
   color: grey;
 }
 
+#change-password-btn:hover {
+  cursor: pointer;
+  color: grey;
+}
+
 #faq-heading-row {
   justify-content: center;
 }
@@ -33,4 +38,8 @@
 
 #faqs-container {
   padding-bottom: 50px;
+}
+
+.change-password-form {
+  padding: 0px 15px;
 }
