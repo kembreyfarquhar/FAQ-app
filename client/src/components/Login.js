@@ -5,14 +5,14 @@ import Container from "react-bootstrap/esm/Container";
 import Form from "react-bootstrap/Form";
 import axios from "axios";
 import { CustomAlert } from "./CustomAlert";
-
-const dotenv = require("dotenv").config();
+import { ForgotPasswordModal } from "./ForgotPasswordModal";
 
 export const Login = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [validated, setValidated] = useState(false);
   const [requestError, setRequestError] = useState(null);
+  const [modalOpen, setModalOpen] = useState(false);
 
   function logIn(e) {
     e.preventDefault();
@@ -65,6 +65,12 @@ export const Login = (props) => {
             text={requestError}
           />
         )}
+        {modalOpen && (
+          <ForgotPasswordModal
+            modalOpen={modalOpen}
+            setModalOpen={setModalOpen}
+          />
+        )}
         <h2 id="login-heading">Admin Login</h2>
         <Form noValidate validated={validated} onSubmit={logIn}>
           <Form.Group controlId="formBasicEmail">
@@ -96,6 +102,11 @@ export const Login = (props) => {
             Submit
           </Button>
         </Form>
+        <div id="login-forgot-password">
+          <span onClick={() => setModalOpen(true)} id="forgot-password-text">
+            Forgot Password
+          </span>
+        </div>
       </Container>
     </div>
   );
