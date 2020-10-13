@@ -10,8 +10,6 @@ import { CustomAlert } from "./CustomAlert";
 import { Header } from "./Header";
 import { SendQuestion } from "./SendQuestion";
 
-const dotenv = require("dotenv").config();
-
 export const Home = (props) => {
   const { setIsLoggingIn, isAdmin, setIsAdmin } = props;
   const [faqs, setFaqs] = useState([]);

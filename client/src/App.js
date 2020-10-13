@@ -3,8 +3,6 @@ import axios from "axios";
 import { Home } from "./components/Home";
 import { Login } from "./components/Login";
 
-const dotenv = require("dotenv").config();
-
 function App() {
   const [loggingIn, setIsLoggingIn] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);

@@ -6,8 +6,6 @@ import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
 import { successReload } from "./CustomAlert";
 
-const dotenv = require("dotenv").config();
-
 export const FaqForm = (props) => {
   let initialState;
   if (props.faq) {

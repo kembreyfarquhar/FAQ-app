@@ -10,8 +10,6 @@ import Modal from "react-bootstrap/Modal";
 import { CustomAlert, successReload } from "./CustomAlert";
 import { FaqForm } from "./FaqForm";
 
-const dotenv = require("dotenv").config();
-
 export const Faq = (props) => {
   const { faq, isAdmin } = props;
   const [open, setOpen] = useState(false);
