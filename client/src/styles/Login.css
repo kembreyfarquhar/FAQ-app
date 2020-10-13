@@ -18,3 +18,19 @@
 #login-password {
   margin-bottom: 30px;
 }
+
+#login-forgot-password {
+  margin-top: 20px;
+  width: 100%;
+  text-align: center;
+  font-weight: 500;
+}
+
+#forgot-password-text:hover {
+  cursor: pointer;
+  color: grey;
+}
+
+#forgot-password-form {
+  padding: 5px 10px;
+}
