@@ -64,7 +64,7 @@ router.post(
       from: process.env.YAHOO_USER,
       to: email,
       subject: "FAQ App Password Change",
-      html: `<h3>You've requested a password change.</h3><br><p>Here is your temporary password: <strong>${password}</strong></p><br><p>Please visit the site <a href="http://localhost:3000/">here</a> and sign in with this password. Once you're done, please change it to something more personal and secure.</p><br><br><p>Thank you,</p><p>Curate FAQ App Team</p>`,
+      html: `<h3>You've requested a password change.</h3><br><p>Here is your temporary password: <strong>${password}</strong></p><br><p>Please visit the site <a href="https://faq-app.netlify.app/">here</a> and sign in with this password. Once you're done, please change it to something more personal and secure.</p><br><br><p>Thank you,</p><p>Curate FAQ App Team</p>`,
     };
 
     try {
