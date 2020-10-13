@@ -49,7 +49,30 @@ router.post("/login", adminValidator.validateWithPassword, (req, res) => {
 
 //VALIDATE TOKEN
 router.post("/:token", adminValidator.tokenRestricted, (req, res) => {
-  res.status(200).json(req.token);
+  res.status(200).json(req.jwtToken);
+});
+
+//CHANGE PASSWORD
+router.patch("/password", adminValidator.tokenRestricted, (req, res) => {
+  const email = req.jwtToken.email;
+  if (
+    !req.body.hasOwnProperty("password") ||
+    Object.keys(req.body).length === 0
+  )
+    res.status(400).json({ error: "Please provide a password" });
+
+  let password = req.body.password;
+  const hash = bcrypt.hashSync(password, 10);
+  password = hash;
+
+  Admins.updatePassword(email, password)
+    .then((saved) => {
+      delete saved.password;
+      res.status(201).json(saved);
+    })
+    .catch((err) => {
+      res.status(500).json({ error: err.toString(), detail: err.detail });
+    });
 });
 
 //FORGOT PASSWORD
