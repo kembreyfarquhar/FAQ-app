@@ -35,11 +35,14 @@ As an Administrator User I’d like the ability to manage questions and answers 
 
 > **All EndPoints listed below require a `token`! Send an `authorizatoin header` with the token provided upon register/login.**
 
-| Links                         | Endpoints   |
-| ----------------------------- | ----------- |
-| [POST New FAQ](#post-new-faq) | `/faqs`     |
-| [PUT FAQ](#put-faq)           | `/faqs/:id` |
-| [DELETE FAQ](#delete-faq)     | `/faqs/:id` |
+| Links                                           | Endpoints                |
+| ----------------------------------------------- | ------------------------ |
+| [POST Validate Token](#post-validate-token)     | `/api/auth/:token`       |
+| [POST Forgot Password](#post-forgot-password)   | `/api/auth/email/:email` |
+| [PATCH Change Password](#patch-change-password) | `/api/auth/password`     |
+| [POST New FAQ](#post-new-faq)                   | `/faqs`                  |
+| [PUT FAQ](#put-faq)                             | `/faqs/:id`              |
+| [DELETE FAQ](#delete-faq)                       | `/faqs/:id`              |
 
 ---
 
@@ -151,6 +154,84 @@ As an Administrator User I’d like the ability to manage questions and answers 
   "created_at": "2020-10-08T16:38:43.257Z",
   "updated_at": "2020-10-08T16:38:43.257Z",
   "last_edited_by": 1
+}
+```
+
+[Back to Top](#table-of-contents)
+
+---
+
+### [POST] Validate Token
+
+#### URL: https://curate-faq.herokuapp.com/api/auth/:token
+
+> Use the token as a query param
+
+**Return (success):** _an object with the following_
+
+> Status 200
+
+```json
+{
+  "subject": 5,
+  "email": "johndoe@gmail.com",
+  "iat": 1602692217,
+  "exp": 1602778617
+}
+```
+
+**Return (failure):**
+
+> Status 401
+
+```json
+{
+  "message": "Invalid token"
+}
+```
+
+[Back to Top](#table-of-contents)
+
+---
+
+### [POST] Forgot Password
+
+#### URL: https://curate-faq.herokuapp.com/api/auth/email/:email
+
+> Use the email as a query param
+
+**Return:**
+
+```json
+{
+  "message": "Password updated, email sent"
+}
+```
+
+This endpoint will send a randomly generated 10 character temporary password to the admin's email address (prompting them to change it after logging in).
+
+[Back to Top](#table-of-contents)
+
+---
+
+### [PATCH] Change Password
+
+#### URL: https://curate-faq.herokuapp.com/api/auth/password
+
+**Payload:**
+
+```json
+{
+  "password": "somethingSecure"
+}
+```
+
+**Return:**
+
+```json
+{
+  "id": 5,
+  "email": "johndoe@gmail.com"
 }
 ```
 
